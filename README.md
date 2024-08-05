@@ -6,19 +6,24 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
-
-* System dependencies
+ruby 3.0.2p107 (2021-07-07 revision 0db68f0233) [x86_64-linux-gnu]
+Rails 7.1.3.4
 
 * Configuration
+gem 'nokogiri'  # For HTML parsing
+gem 'httparty'  # For making HTTP requests
+
 
 * Database creation
 
-* Database initialization
+rails generate model Product name:string price:decimal website:string url:string
+rails db:migrate
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+* Testing 
+Run rake crawler:fetch_prices
 
-* Deployment instructions
+ruby app/service/scrape_bestbuy.rb to test individual file
 
-* ...
+curl -I 'https://www.bestbuy.ca/en-ca' to check connection
+
